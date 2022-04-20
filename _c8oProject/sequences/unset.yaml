@@ -1,0 +1,48 @@
+accessibility: Private
+↓jIf [steps.IfStep-1650468833209]: 
+  condition: name.indexOf("..") != -1
+  ↓Error_structure [steps.XMLErrorStep-1650468854967]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"A name cannot contains ''..''"'
+  ↓Return [steps.ReturnStep-1650468854970]: 
+↓IfFileExists [steps.IfFileExistStep-1650468815800]: 
+  condition: '"./app-shorter/ROOT/" + name + ".html"'
+  ↓Delete_file [steps.DeleteStep-1650468565371]: 
+    sourcePath: '"./app-shorter/ROOT/" + name + ".html"'
+↓IfFileExistsThenElse [steps.IfFileExistThenElseStep-1650469095921]: 
+  condition: '"./app-shorter/ROOT/" + name + "/"'
+  ↓jThen [steps.ThenStep-1650469095923]: 
+    ↓Delete_folder [steps.DeleteStep-1650468655134]: 
+      sourcePath: '"./app-shorter/ROOT/" + name + "/"'
+    ↓Element [steps.XMLElementStep-1650469116275]: 
+      nodeName: status
+      nodeText: removed
+    ↓Call_Sequence [steps.SequenceStep-1650470683853]: 
+      sourceSequence: lib_AppShorter.apply
+    ↓Copy [steps.XMLCopyStep-1650470683856]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1650470683853
+            - java.lang.String: 
+              - ↑value: ./document/*
+  ↓jElse [steps.ElseStep-1650469095925]: 
+    ↓Element [steps.XMLElementStep-1650469132476]: 
+      nodeName: status
+      nodeText: no exists
+↓name [variables.RequestableVariable-1650468577594]: 
+  comment: Name of the link to remove
+  description: Name of the link to remove
+  required: true

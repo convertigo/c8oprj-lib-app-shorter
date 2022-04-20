@@ -1,0 +1,35 @@
+accessibility: Private
+↓List_directory [steps.ListDirStep-1650467761119]: 
+  sourceDirectory: '"./app-shorter/ROOT/"'
+↓Iterator [steps.IteratorStep-1650468035043]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650467761119
+        - java.lang.String: 
+          - ↑value: ./file/text()
+  ↓shortcut [steps.XMLComplexStep-1650468147014]: 
+    nodeName: shortcut
+    ↓name [steps.ElementStep-1650468388473]: 
+      expression: name = item.getTextContent().replaceFirst("\\.html$", "")
+      nodeName: name
+    ↓link [steps.ElementStep-1650468086331]: 
+      expression: '"/" + name + "/"'
+      nodeName: link
+    ↓linkAlt [steps.ElementStep-1650468514557]: 
+      expression: '"/" + name + ".html"'
+      nodeName: linkAlt
+    ↓Read_XML [steps.ReadXMLStep-1650468248668]: 
+      dataFile: '"./app-shorter/ROOT/" + item.getTextContent()'
+    ↓target [steps.XMLElementStep-1650468305836]: 
+      nodeName: target
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1650468248668
+            - java.lang.String: 
+              - ↑value: substring(./html/head/meta/@content, 8)

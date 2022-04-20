@@ -1,0 +1,9 @@
+↑convertigo: 7.9.0.m006
+↓lib_AppShorter [core.Project]: 
+  comment: Convertigo Application Shorter
+  version: 0.0.1
+  ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓apply [sequences.GenericSequence]: 🗏 sequences/apply.yaml
+  ↓list [sequences.GenericSequence]: 🗏 sequences/list.yaml
+  ↓set [sequences.GenericSequence]: 🗏 sequences/set.yaml
+  ↓unset [sequences.GenericSequence]: 🗏 sequences/unset.yaml

@@ -1,0 +1,124 @@
+accessibility: Private
+comment: Set a root link to the application defined in the 'project'. Default is the Application name but it can be 'name'.
+↓jIf [steps.IfStep-1650464521967]: 
+  condition: (prj = com.twinsoft.convertigo.engine.Engine.theApp.databaseObjectsManager.getOriginalProjectByName(project)) == null
+  ↓Error_structure [steps.XMLErrorStep-1650465244214]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"There is no project ''" + project +"'' on this server."'
+  ↓Return [steps.ReturnStep-1650465250514]: 
+↓jIf1 [steps.IfStep-1650465376298]: 
+  condition: '(mob = prj.getMobileApplication()) == null || (appName = name.length > 0 ? name : mob.getComputedApplicationName()) == null'
+  ↓Error_structure [steps.XMLErrorStep-1650465376301]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"There is no Application in the project ''" + project +"''."'
+  ↓Return [steps.ReturnStep-1650465376304]: 
+↓head [steps.XMLComplexStep-1650465981075]: 
+  nodeName: head
+  output: false
+  ↓refresh [steps.XMLComplexStep-1650466063356]: 
+    nodeName: meta
+    output: false
+    ↓http_equiv [steps.XMLAttributeStep-1650466109256]: 
+      nodeName: http-equiv
+      nodeText: refresh
+    ↓content [steps.AttributeStep-1650466098941]: 
+      expression: '"0; url=" + context.getConvertigoUrl().replaceFirst(".*?//.*?/", "/") + "projects/" + project + "/DisplayObjects/mobile/"'
+      nodeName: content
+↓jIf2 [steps.IfStep-1650468937957]: 
+  condition: appName.indexOf("..") != -1 || appName.toLowerCase() == "index" || appName.toLowerCase() == "convertigo"
+  ↓Error_structure [steps.XMLErrorStep-1650468937960]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"Invalid name: " + appName'
+  ↓Return [steps.ReturnStep-1650468937963]: 
+↓Write_XML [steps.WriteXMLStep-1650466279277]: 
+  dataFile: '"./app-shorter/ROOT/" + appName + ".html"'
+  defaultRootTagname: html
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650465981075
+        - java.lang.String: 
+          - ↑value: .
+↓Write_XML1 [steps.WriteXMLStep-1650466633518]: 
+  dataFile: '"./app-shorter/ROOT/" + appName + "/index.html"'
+  defaultRootTagname: html
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650465981075
+        - java.lang.String: 
+          - ↑value: .
+↓shortcut [steps.XMLComplexStep-1650467319111]: 
+  nodeName: shortcut
+  ↓name [steps.ElementStep-1650468427925]: 
+    expression: appName
+    nodeName: name
+  ↓link [steps.ElementStep-1650467338540]: 
+    expression: '"/" + appName + "/"'
+    nodeName: link
+  ↓linkAlt [steps.ElementStep-1650468454862]: 
+    expression: '"/" + appName + ".html"'
+    nodeName: linkAlt
+  ↓target [steps.XMLElementStep-1650467478711]: 
+    nodeName: target
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1650466063356
+          - java.lang.String: 
+            - ↑value: substring(./@content, 8)
+↓Call_Sequence [steps.SequenceStep-1650470631358]: 
+  sourceSequence: lib_AppShorter.apply
+↓Copy [steps.XMLCopyStep-1650470646020]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650470631358
+        - java.lang.String: 
+          - ↑value: ./document/*
+↓project [variables.RequestableVariable-1650463091153]: 
+  comment: Project with an Application target of the redirection page.
+  description: Project with an Application target of the redirection page.
+  required: true
+↓name [variables.RequestableVariable-1650464217448]: 
+  comment: (optional) Name of the redirection, override the Application name of the 'project".
+  description: (optional) Name of the redirection, override the Application name of the 'project".
+  value: 

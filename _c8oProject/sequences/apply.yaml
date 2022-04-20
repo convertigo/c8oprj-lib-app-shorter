@@ -1,0 +1,28 @@
+accessibility: Private
+autoStart: true
+↓IfFileExistsThenElse [steps.IfFileExistThenElseStep-1650470518491]: 
+  condition: '"./app-shorter/ROOT/"'
+  ↓jThen [steps.ThenStep-1650470519441]: 
+    ↓SaveIndex [steps.CopyStep-1650470093068]: 
+      destinationPath: '"./app-shorter/"'
+      overwrite: true
+      sourcePath: new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/index.html").getCanonicalPath()
+    ↓Delete_file [steps.DeleteStep-1650470950065]: 
+      sourcePath: rootPath = new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/").getCanonicalPath()
+    ↓Create_directory [steps.CreateDirectoryStep-1650471104775]: 
+      destinationPath: rootPath = new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/").getCanonicalPath()
+    ↓RestoreIndex [steps.CopyStep-1650470293572]: 
+      destinationPath: new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/").getCanonicalPath()
+      overwrite: true
+      sourcePath: '"./app-shorter/index.html"'
+    ↓CopyFiles [steps.CopyStep-1650469265651]: 
+      destinationPath: new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "..").getCanonicalPath()
+      overwrite: true
+      sourcePath: '"./app-shorter/ROOT/"'
+    ↓apply [steps.XMLElementStep-1650470557947]: 
+      nodeName: apply
+      nodeText: ok
+  ↓jElse [steps.ElseStep-1650470519443]: 
+    ↓apply [steps.XMLElementStep-1650470570574]: 
+      nodeName: apply
+      nodeText: ko
