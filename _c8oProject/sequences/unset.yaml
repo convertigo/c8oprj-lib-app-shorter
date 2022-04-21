@@ -1,5 +1,5 @@
 accessibility: Private
-comment: Remove a Shortcut to an application
+comment: Remove a shortcut to an application
 ↓jIf [steps.IfStep-1650468833209]: 
   condition: name.indexOf("..") != -1
   ↓Error_structure [steps.XMLErrorStep-1650468854967]: 
@@ -44,6 +44,6 @@ comment: Remove a Shortcut to an application
       nodeName: status
       nodeText: no exists
 ↓name [variables.RequestableVariable-1650468577594]: 
-  comment: Name of the shirtcut to remove
-  description: Name of the link to remove
+  comment: Name of the shortcut to remove
+  description: Name of the shortcut to remove
   required: true

@@ -1,5 +1,5 @@
 accessibility: Private
-comment: Set a root link to the application defined in the 'project'. Default is the Application name but it can be 'name'.
+comment: Set a root link to the application defined in the 'project'. Default is the Application name but it can be 'name'
 ↓jIf [steps.IfStep-1650464521967]: 
   condition: (prj = com.twinsoft.convertigo.engine.Engine.theApp.databaseObjectsManager.getOriginalProjectByName(project)) == null
   ↓Error_structure [steps.XMLErrorStep-1650465244214]: 
@@ -115,10 +115,10 @@ comment: Set a root link to the application defined in the 'project'. Default is
         - java.lang.String: 
           - ↑value: ./document/*
 ↓project [variables.RequestableVariable-1650463091153]: 
-  comment: Convertigo Project name where the  application is defined
-  description: Project with an Application target of the redirection page.
+  comment: Convertigo Project name where the application is defined
+  description: Convertigo Project name where the application is defined
   required: true
 ↓name [variables.RequestableVariable-1650464217448]: 
-  comment: (optional) Shortcut name used to redirect to the app. If empty, the project name will be automatically used
-  description: (optional) Name of the redirection, override the Application name of the 'project".
+  comment: (optional) Shortcut name used to redirect to the app. If empty, the Application name will be automatically used
+  description: (optional) Shortcut name used to redirect to the app. If empty, the Application name will be automatically used
   value: 

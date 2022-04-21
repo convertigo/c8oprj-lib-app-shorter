@@ -24,7 +24,6 @@ comment: List currently defined shortcuts
       nodeName: linkAlt
     ↓Read_XML [steps.ReadXMLStep-1650468248668]: 
       dataFile: '"./app-shorter/ROOT/" + item.getTextContent()'
-      replaceStepElement: false
     ↓target [steps.XMLElementStep-1650468305836]: 
       nodeName: target
       sourceDefinition: 
