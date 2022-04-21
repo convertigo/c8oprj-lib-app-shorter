@@ -8,7 +8,7 @@ Deploy this Library in any existing Convertigo Server Instance..
 ## Usage
 The library provides several sequences you can run from the test platform :
 
-* Connect to https://<yourserver>:<Port>
+* Connect to https://&lt;yourserver&gt;:&lt;Port&gt;
 * Authenticate to the test platform using admin user & password (Upper right)
 * Open the Sequence Section
 * Run one of the following sequences.
