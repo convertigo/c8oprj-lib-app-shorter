@@ -1,4 +1,5 @@
 accessibility: Private
+comment: List currently defined shortcuts
 ↓List_directory [steps.ListDirStep-1650467761119]: 
   sourceDirectory: '"./app-shorter/ROOT/"'
 ↓Iterator [steps.IteratorStep-1650468035043]: 
@@ -23,6 +24,7 @@ accessibility: Private
       nodeName: linkAlt
     ↓Read_XML [steps.ReadXMLStep-1650468248668]: 
       dataFile: '"./app-shorter/ROOT/" + item.getTextContent()'
+      replaceStepElement: false
     ↓target [steps.XMLElementStep-1650468305836]: 
       nodeName: target
       sourceDefinition: 

@@ -1,6 +1,10 @@
-↑convertigo: 7.9.0.m006
+↑convertigo: 8.0.0.m006
 ↓lib_AppShorter [core.Project]: 
-  comment: Convertigo Application Shorter
+  comment: |
+    Convertigo Application Shorter.
+    This Library enables shortcuts to applications by using simple URLs of type http(s)://<server>:<Port>/<shortcut>
+    
+    
   version: 0.0.1
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓apply [sequences.GenericSequence]: 🗏 sequences/apply.yaml
