@@ -1,6 +1,6 @@
 # lib_AppShorter
 Convertigo Application Shorter.
-This Library enables shortcuts to applications by using simple URLs of type http(s)://<server>:<Port>/<shortcut>
+This Library enables shortcuts to applications by using simple URLs of type http(s)://&lt;server&gt;:&lt;Port&gt;/&lt;shortcut&gt;
 
 ## Installation
 Deploy this Library in any existing Convertigo Server Instance..
