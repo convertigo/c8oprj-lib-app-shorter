@@ -1,11 +1,12 @@
 ↑convertigo: 7.9.0.m006
 ↓lib_AppShorter [core.Project]: 
   comment: |
-    Convertigo Application Shorter.
+    Convertigo Application URL Shortener
     This Library enables shortcuts to applications by using simple URLs of type http(s)://<server>:<port>/<shortcut>
-  version: 0.0.2
+  version: 0.0.3
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓apply [sequences.GenericSequence]: 🗏 sequences/apply.yaml
+  ↓custom [sequences.GenericSequence]: 🗏 sequences/custom.yaml
   ↓list [sequences.GenericSequence]: 🗏 sequences/list.yaml
   ↓set [sequences.GenericSequence]: 🗏 sequences/set.yaml
   ↓unset [sequences.GenericSequence]: 🗏 sequences/unset.yaml

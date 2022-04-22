@@ -1,5 +1,5 @@
 accessibility: Private
-comment: Set a root link to the application defined in the 'project'. Default is the Application name but it can be 'name'
+comment: Set a root shortcut to the application defined in the 'project'. Default is the Application name but it can be 'name'
 ↓jIf [steps.IfStep-1650464521967]: 
   condition: (prj = com.twinsoft.convertigo.engine.Engine.theApp.databaseObjectsManager.getOriginalProjectByName(project)) == null
   ↓Error_structure [steps.XMLErrorStep-1650465244214]: 
@@ -32,18 +32,6 @@ comment: Set a root link to the application defined in the 'project'. Default is
           - ↑mode: JS
           - →→: '"There is no Application in the project ''" + project +"''."'
   ↓Return [steps.ReturnStep-1650465376304]: 
-↓head [steps.XMLComplexStep-1650465981075]: 
-  nodeName: head
-  output: false
-  ↓refresh [steps.XMLComplexStep-1650466063356]: 
-    nodeName: meta
-    output: false
-    ↓http_equiv [steps.XMLAttributeStep-1650466109256]: 
-      nodeName: http-equiv
-      nodeText: refresh
-    ↓content [steps.AttributeStep-1650466098941]: 
-      expression: '"0; url=" + context.getConvertigoUrl().replaceFirst(".*?//.*?/", "/") + "projects/" + project + "/DisplayObjects/mobile/"'
-      nodeName: content
 ↓jIf2 [steps.IfStep-1650468937957]: 
   condition: appName.indexOf("..") != -1 || appName.toLowerCase() == "index" || appName.toLowerCase() == "convertigo"
   ↓Error_structure [steps.XMLErrorStep-1650468937960]: 
@@ -60,6 +48,45 @@ comment: Set a root link to the application defined in the 'project'. Default is
           - ↑mode: JS
           - →→: '"Invalid name: " + appName'
   ↓Return [steps.ReturnStep-1650468937963]: 
+↓Call_Sequence1 [steps.SequenceStep-1650616523762]: 
+  sourceSequence: lib_AppShorter.list
+↓Iterator [steps.IteratorStep-1650616589167]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650616523762
+        - java.lang.String: 
+          - ↑value: ./document/shortcut/name
+  ↓jIf [steps.IfStep-1650616661256]: 
+    condition: '"" + item.getTextContent() == appName'
+    ↓Error_structure [steps.XMLErrorStep-1650616700835]: 
+      code: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: PLAIN
+            - →→: '-1'
+      message: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: JS
+            - →→: '"Already used name: " + appName + ". Please call ''unset'' before."'
+    ↓Return [steps.ReturnStep-1650616700838]: 
+↓head [steps.XMLComplexStep-1650465981075]: 
+  nodeName: head
+  output: false
+  ↓refresh [steps.XMLComplexStep-1650466063356]: 
+    nodeName: meta
+    output: false
+    ↓http_equiv [steps.XMLAttributeStep-1650466109256]: 
+      nodeName: http-equiv
+      nodeText: refresh
+    ↓content [steps.AttributeStep-1650466098941]: 
+      expression: '"0; url=" + context.getConvertigoUrl().replaceFirst(".*?//.*?/", "/") + "projects/" + project + "/DisplayObjects/mobile/"'
+      nodeName: content
 ↓Write_XML [steps.WriteXMLStep-1650466279277]: 
   dataFile: '"./app-shorter/ROOT/" + appName + ".html"'
   defaultRootTagname: html

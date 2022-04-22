@@ -1,0 +1,153 @@
+accessibility: Private
+comment: Set a root shortcut to a custom Convertigo URL
+↓jIf2 [steps.IfStep-1650616783724]: 
+  condition: name.length == 0 || name.indexOf("..") != -1 || name.toLowerCase() == "index" || name.toLowerCase() == "convertigo"
+  ↓Error_structure [steps.XMLErrorStep-1650616783727]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"Invalid name: " + name'
+  ↓Return [steps.ReturnStep-1650616783730]: 
+↓jIf21 [steps.IfStep-1650616902724]: 
+  condition: '!url.startsWith(context.getConvertigoUrl())'
+  ↓Error_structure [steps.XMLErrorStep-1650616902727]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"Invalid url, should begin with: " + context.getConvertigoUrl()'
+  ↓Return [steps.ReturnStep-1650616902730]: 
+↓jIf211 [steps.IfStep-1650617489165]: 
+  condition: url.startsWith(context.getConvertigoUrl() + "admin/")
+  ↓Error_structure [steps.XMLErrorStep-1650617489168]: 
+    code: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: '-1'
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: '"Invalid url, cannot go to admin: " + context.getConvertigoUrl() + "admin"'
+  ↓Return [steps.ReturnStep-1650617489171]: 
+↓Call_Sequence1 [steps.SequenceStep-1650616783733]: 
+  sourceSequence: lib_AppShorter.list
+↓Iterator [steps.IteratorStep-1650616783736]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650616783733
+        - java.lang.String: 
+          - ↑value: ./document/shortcut/name
+  ↓jIf [steps.IfStep-1650616783739]: 
+    condition: '"" + item.getTextContent() == name'
+    ↓Error_structure [steps.XMLErrorStep-1650616783742]: 
+      code: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: PLAIN
+            - →→: '-1'
+      message: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: JS
+            - →→: '"Already used name: " + name + ". Please call ''unset'' before."'
+    ↓Return [steps.ReturnStep-1650616783745]: 
+↓head [steps.XMLComplexStep-1650617628605]: 
+  nodeName: head
+  output: false
+  ↓refresh [steps.XMLComplexStep-1650617628608]: 
+    nodeName: meta
+    output: false
+    ↓http_equiv [steps.XMLAttributeStep-1650617628611]: 
+      nodeName: http-equiv
+      nodeText: refresh
+    ↓content [steps.AttributeStep-1650617628614]: 
+      expression: '"0; url=" + new java.lang.String(url).replaceFirst(".*?//.*?/", "/")'
+      nodeName: content
+↓Write_XML [steps.WriteXMLStep-1650617628617]: 
+  dataFile: '"./app-shorter/ROOT/" + name + ".html"'
+  defaultRootTagname: html
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650617628605
+        - java.lang.String: 
+          - ↑value: .
+↓Write_XML1 [steps.WriteXMLStep-1650617628620]: 
+  dataFile: '"./app-shorter/ROOT/" + name + "/index.html"'
+  defaultRootTagname: html
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650617628605
+        - java.lang.String: 
+          - ↑value: .
+↓shortcut [steps.XMLComplexStep-1650617628623]: 
+  nodeName: shortcut
+  ↓name [steps.ElementStep-1650617628626]: 
+    expression: name
+    nodeName: name
+  ↓link [steps.ElementStep-1650617628629]: 
+    expression: '"/" + name + "/"'
+    nodeName: link
+  ↓linkAlt [steps.ElementStep-1650617628632]: 
+    expression: '"/" + name + ".html"'
+    nodeName: linkAlt
+  ↓target [steps.XMLElementStep-1650617628635]: 
+    nodeName: target
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1650617628608
+          - java.lang.String: 
+            - ↑value: substring(./@content, 8)
+↓Call_Sequence [steps.SequenceStep-1650617628638]: 
+  sourceSequence: lib_AppShorter.apply
+↓Copy [steps.XMLCopyStep-1650617628641]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1650617628638
+        - java.lang.String: 
+          - ↑value: ./document/*
+↓name [variables.RequestableVariable-1650616421058]: 
+  comment: Shortcut name used to redirect to the 'url'
+  description: Shortcut name used to redirect to the 'url'
+  required: true
+  value: 
+↓url [variables.RequestableVariable-1650616438001]: 
+  comment: Absolute target URL for the redirect. Must be for this Convertigo server
+  description: Absolute target URL for the redirect. Must be for this Convertigo server
+  required: true
+  value: 

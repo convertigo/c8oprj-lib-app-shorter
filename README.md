@@ -20,13 +20,18 @@ The library provides several sequences you can run from the test platform :
 |----------|-------|
 | list  | List all shortcuts defined |
 | set   | set a shortcut to an app |
+| custom| set a shortcut to a custom Convertigo URL |
 | unset | delete a shortcut to an app |
 
   
 ### __set__ variables
 * __project__ : the Convertigo project name holding the target application. This is Case sensitive
-* __name__    : the shortcut name. If not provided the project name will be used automatically.
-  
+* __name__    : the shortcut name. If not provided the project name will be used automatically
+
+### __custom__ variables
+* __name__ : Shortcut name used to redirect to the 'url'
+* __url__  : Absolute target URL for the redirect. Must be for this Convertigo server
+
 ### __unset__ variables
 * __name__    : the shortcut name
   
