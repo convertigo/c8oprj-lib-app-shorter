@@ -35,4 +35,5 @@ The library provides several sequences you can run from the test platform :
 ### __unset__ variables
 * __name__    : the shortcut name
   
-  
+## Note
+You can put a redirect at ROOT `http(s)://<server>:<Port>/` by using `index` as `name`.

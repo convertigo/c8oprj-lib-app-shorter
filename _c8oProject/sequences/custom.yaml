@@ -1,7 +1,7 @@
 accessibility: Private
 comment: Set a root shortcut to a custom Convertigo URL
 ↓jIf2 [steps.IfStep-1650616783724]: 
-  condition: name.length == 0 || name.indexOf("..") != -1 || name.toLowerCase() == "index" || name.toLowerCase() == "convertigo"
+  condition: name.length == 0 || name.indexOf("..") != -1 || name.toLowerCase() == "convertigo"
   ↓Error_structure [steps.XMLErrorStep-1650616783727]: 
     code: 
       - xmlizable: 

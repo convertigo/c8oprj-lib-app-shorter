@@ -33,7 +33,7 @@ comment: Set a root shortcut to the application defined in the 'project'. Defaul
           - →→: '"There is no Application in the project ''" + project +"''."'
   ↓Return [steps.ReturnStep-1650465376304]: 
 ↓jIf2 [steps.IfStep-1650468937957]: 
-  condition: appName.indexOf("..") != -1 || appName.toLowerCase() == "index" || appName.toLowerCase() == "convertigo"
+  condition: appName.indexOf("..") != -1 || appName.toLowerCase() == "convertigo"
   ↓Error_structure [steps.XMLErrorStep-1650468937960]: 
     code: 
       - xmlizable: 

@@ -8,10 +8,15 @@ autoStart: true
       ↓LinuxChangeOwner [steps.ProcessExecStep-1650534353661]: 
         commandLine: '["sudo", "chown", "" + java.lang.System.getProperty("user.name"), "" + new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/").getCanonicalPath()]'
         output: true
+    ↓jIfIndexBack [steps.IfStep-1653923940906]: 
+      condition: '!new java.io.File(root = new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/"), "index.htm").exists()'
+      ↓Rename_file [steps.RenameStep-1653924070871]: 
+        newName: '"index.htm"'
+        sourcePath: new java.io.File(root, "index.html").getPath()
     ↓eachToRemove [steps.SimpleIteratorStep-1650533197648]: 
-      expression: (root = new java.io.File(com.twinsoft.convertigo.engine.Engine.WEBAPP_PATH, "../ROOT/")).listFiles()
+      expression: root.listFiles()
       ↓jIf [steps.IfStep-1650533343009]: 
-        condition: '!item.getName().equals("index.html")'
+        condition: '!item.getName().equals("index.htm")'
         ↓Delete_file [steps.DeleteStep-1650533400747]: 
           sourcePath: item.getPath()
     ↓List_directory [steps.ListDirStep-1650533704390]: 
