@@ -37,6 +37,6 @@ The library provides several sequences you can run from the test platform :
   
 ## Note
 If you want to create a shortcut to your app directly from an URL of this type 
-`http(s)://<server>:<port>` so that just ascessing the Convertigo server starts a given app instead of the admin page. You can use the __set__ or __custom__ Sequences by providing explicitly the value 'index' for the __name__ variable.
+`http(s)://<server>:<port>` so that just accessing the Convertigo server starts a given app instead of the admin page, you can use the __set__ or __custom__ Sequences by providing explicitly the value 'index' for the __name__ variable.
 
 
