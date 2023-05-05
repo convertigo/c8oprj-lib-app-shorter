@@ -34,6 +34,7 @@ comment: Set a root shortcut to a custom Convertigo URL
   ↓Return [steps.ReturnStep-1650616902730]: 
 ↓jIf211 [steps.IfStep-1650617489165]: 
   condition: url.startsWith(context.getConvertigoUrl() + "admin/")
+  isEnabled: false
   ↓Error_structure [steps.XMLErrorStep-1650617489168]: 
     code: 
       - xmlizable: 

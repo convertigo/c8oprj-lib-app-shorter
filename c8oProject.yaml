@@ -3,7 +3,7 @@
   comment: |
     Convertigo Application URL Shortener
     This Library enables shortcuts to applications by using simple URLs of type http(s)://<server>:<port>/<shortcut>
-  version: 0.0.4
+  version: 0.0.5
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓apply [sequences.GenericSequence]: 🗏 sequences/apply.yaml
   ↓custom [sequences.GenericSequence]: 🗏 sequences/custom.yaml
